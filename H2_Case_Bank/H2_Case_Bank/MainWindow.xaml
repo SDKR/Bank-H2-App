@@ -1,0 +1,51 @@
+﻿<Window x:Class="H2_Case_Bank.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:H2_Case_Bank"
+        mc:Ignorable="d"
+        Title="Bank" Height="800" Width="1200">
+    <Grid Margin="0,0,-0.4,0.4">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF85B4E8" Offset="0"/>
+                <GradientStop Color="#FF476382" Offset="0.995"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <DataGrid HorizontalAlignment="Left" Height="561" Margin="47,100,0,0" VerticalAlignment="Top" Width="741" Name="Kundeoversigt_DataGrid" IsReadOnly="True" MouseDoubleClick="Kundeoversigt_DataGrid_MouseDoubleClick" SelectionChanged="Kundeoversigt_DataGrid_SelectionChanged" HorizontalGridLinesBrush="#FFBDB5B5" VerticalGridLinesBrush="#FFF0EDED" Cursor="Hand" ItemsSource="{Binding ReturnCustomers}" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Kunde ID" Binding="{Binding UserID}"/>
+                <DataGridTextColumn Header="Fornavn" Binding="{Binding Firstname}"/>
+                <DataGridTextColumn Header="Efternavn" Binding="{Binding Lastname}"/>
+                <DataGridTextColumn Header="Opretelses Dato" Binding="{Binding CreationDate}" Width="*"/>
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="Slet Kunde" HorizontalAlignment="Left" Margin="39,699,0,0" VerticalAlignment="Top" Width="109" Height="39" Background="#FF316BB3" Foreground="White" Name="SletKunde_Button" Click="SletKunde_Button_Click" FontWeight="Bold" Cursor="Hand"/>
+        <Label Content="Fornavn" HorizontalAlignment="Left" Margin="825,119,0,0" VerticalAlignment="Top" Foreground="#FF144AE0" Name="Fornavn_Label"/>
+        <Label Content="Efternavn" HorizontalAlignment="Left" Margin="825,150,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.083,0.026" Foreground="#FF144AE0" Name="Efternavn_Label"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="927,123,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="235" Name="Fornavn_TextBox" PreviewKeyDown="Fornavn_TextBox_PreviewKeyDown"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="927,154,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="235" Name="Efternavn_TextBox" PreviewKeyDown="Efternavn_TextBox_PreviewKeyDown"/>
+        <Button Content="Opret" HorizontalAlignment="Left" Margin="1053,191,0,0" VerticalAlignment="Top" Width="109" Height="39" Name="Opret_Button" Background="#FF316BB3" Foreground="White" Click="Opret_Button_Click" FontWeight="Bold" Cursor="Hand"/>
+        <Label Content="Kundeoversigt" HorizontalAlignment="Left" Margin="47,58,0,0" VerticalAlignment="Top" Width="741" Foreground="White" FontWeight="Bold" FontSize="24">
+            <Label.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF3B5A65" Offset="0"/>
+                    <GradientStop Color="#FF85B4E8" Offset="1"/>
+                </LinearGradientBrush>
+            </Label.Background>
+        </Label>
+        <Label Content="Opret Kunde" HorizontalAlignment="Left" Margin="825,58,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.524,-0.36" Width="337" Foreground="White" FontWeight="Bold" FontSize="24">
+            <Label.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF3B5A65" Offset="0"/>
+                    <GradientStop Color="#FF85B4E8" Offset="1"/>
+                </LinearGradientBrush>
+            </Label.Background>
+        </Label>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="565,27,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="223" Name="Search_TextBox" TextChanged="Search_TextBox_TextChanged"/>
+        <Label Content="Find Kunde" HorizontalAlignment="Left" Margin="492,27,0,0" VerticalAlignment="Top" Foreground="#FF144AE0" x:Name="Fornavn_Label_Copy"/>
+
+    </Grid>
+</Window>
