@@ -6,6 +6,16 @@
         xmlns:local="clr-namespace:H2_Case_Bank"
         mc:Ignorable="d"
         Title="Bank" Height="800" Width="1200">
+    <Window.Resources>
+        <Style TargetType="DataGridCell">
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="#FF85B4E8"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
     <Grid Margin="0,0,-0.4,0.4">
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -13,7 +23,25 @@
                 <GradientStop Color="#FF476382" Offset="0.995"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <DataGrid HorizontalAlignment="Left" Height="561" Margin="47,100,0,0" VerticalAlignment="Top" Width="741" Name="Kundeoversigt_DataGrid" IsReadOnly="True" MouseDoubleClick="Kundeoversigt_DataGrid_MouseDoubleClick" SelectionChanged="Kundeoversigt_DataGrid_SelectionChanged" HorizontalGridLinesBrush="#FFBDB5B5" VerticalGridLinesBrush="#FFF0EDED" Cursor="Hand" ItemsSource="{Binding ReturnCustomers}" AutoGenerateColumns="False">
+        <DataGrid HorizontalAlignment="Left" Height="561" Margin="47,100,0,0" VerticalAlignment="Top" Width="741" Name="Kundeoversigt_DataGrid" IsReadOnly="True" MouseDoubleClick="Kundeoversigt_DataGrid_MouseDoubleClick" SelectionChanged="Kundeoversigt_DataGrid_SelectionChanged" HorizontalGridLinesBrush="#FFBDB5B5" VerticalGridLinesBrush="#FFF0EDED" Cursor="Hand" ItemsSource="{Binding ReturnCustomers}" AutoGenerateColumns="False" AlternationCount="2">
+            <DataGrid.RowStyle>
+                <Style TargetType="{x:Type DataGridRow}">
+                    <Style.Triggers>
+                        <Trigger Property="AlternationIndex" Value="0">
+                            <Setter Property="Background" Value="White" />
+                        </Trigger>
+                        <Trigger Property="AlternationIndex" Value="1">
+                            <Setter Property="Background" Value="WhiteSmoke" />
+                        </Trigger>
+                        <DataTrigger Binding="{Binding Path=Selectable}" Value="False">
+                            <DataTrigger.Setters>
+                                <Setter Property="Background" Value="LightGray" />
+                            </DataTrigger.Setters>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.RowStyle>
+
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Kunde ID" Binding="{Binding UserID}"/>
                 <DataGridTextColumn Header="Fornavn" Binding="{Binding Firstname}"/>

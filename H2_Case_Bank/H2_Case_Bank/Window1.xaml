@@ -6,6 +6,16 @@
         xmlns:local="clr-namespace:H2_Case_Bank"
         mc:Ignorable="d"
         Title="Window1" Height="800" Width="1200">
+    <Window.Resources>
+        <Style TargetType="DataGridCell">
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="#FF85B4E8"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
     <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -13,8 +23,26 @@
                 <GradientStop Color="#FF476382" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <DataGrid HorizontalAlignment="Left" Height="396" Margin="30,279,0,0" VerticalAlignment="Top" Width="532" Name="KundeNavn_DataGrid" SelectionChanged="KundeNavn_DataGrid_SelectionChanged" ItemsSource="{Binding getCustomerAccounts}" AutoGenerateColumns="False" HorizontalGridLinesBrush="#FFBDB5B5" VerticalGridLinesBrush="#FFF0EDED" Cursor="Hand">
-             <DataGrid.Columns>
+        <DataGrid HorizontalAlignment="Left" Height="396" Margin="30,279,0,0" VerticalAlignment="Top" Width="532" Name="KundeNavn_DataGrid" SelectionChanged="KundeNavn_DataGrid_SelectionChanged" ItemsSource="{Binding getCustomerAccounts}" AutoGenerateColumns="False" HorizontalGridLinesBrush="#FFBDB5B5" VerticalGridLinesBrush="#FFF0EDED" Cursor="Hand" AlternationCount="2">
+            <DataGrid.RowStyle>
+                <Style TargetType="{x:Type DataGridRow}">
+                    <Style.Triggers>
+                        <Trigger Property="AlternationIndex" Value="0">
+                            <Setter Property="Background" Value="White" />
+                        </Trigger>
+                        <Trigger Property="AlternationIndex" Value="1">
+                            <Setter Property="Background" Value="WhiteSmoke" />
+                        </Trigger>
+                        <DataTrigger Binding="{Binding Path=Selectable}" Value="False">
+                            <DataTrigger.Setters>
+                                <Setter Property="Background" Value="LightGray" />
+                            </DataTrigger.Setters>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.RowStyle>
+
+            <DataGrid.Columns>
                 <DataGridTextColumn Header="Konto nr." Binding="{Binding Accountnumber}"/>
                 <DataGridTextColumn Header="Saldo" Binding="{Binding Balance, StringFormat=c, ConverterCulture='dk-DK'}"/>
                 <DataGridTextColumn Header="Konto Type" Binding="{Binding Accounttype}"/>
@@ -31,7 +59,25 @@
                 </LinearGradientBrush>
             </Label.Background>
         </Label>
-        <DataGrid HorizontalAlignment="Left" Height="396" Margin="623,279,0,0" VerticalAlignment="Top" Width="532" Name="Transaktion_DataGrid" ItemsSource="{Binding getTransactions}" AutoGenerateColumns="False" HorizontalGridLinesBrush="#FFBDB5B5" VerticalGridLinesBrush="#FFF0EDED" Cursor="Hand">
+        <DataGrid HorizontalAlignment="Left" Height="396" Margin="623,279,0,0" VerticalAlignment="Top" Width="532" Name="Transaktion_DataGrid" ItemsSource="{Binding getTransactions}" AutoGenerateColumns="False" HorizontalGridLinesBrush="#FFBDB5B5" VerticalGridLinesBrush="#FFF0EDED" Cursor="Hand" AlternationCount="2">
+            <DataGrid.RowStyle>
+                <Style TargetType="{x:Type DataGridRow}">
+                    <Style.Triggers>
+                        <Trigger Property="AlternationIndex" Value="0">
+                            <Setter Property="Background" Value="White" />
+                        </Trigger>
+                        <Trigger Property="AlternationIndex" Value="1">
+                            <Setter Property="Background" Value="WhiteSmoke" />
+                        </Trigger>
+                        <DataTrigger Binding="{Binding Path=Selectable}" Value="False">
+                            <DataTrigger.Setters>
+                                <Setter Property="Background" Value="LightGray" />
+                            </DataTrigger.Setters>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.RowStyle>
+
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Overførelses nr." Binding="{Binding TransactionID}"/>
                 <DataGridTextColumn Header="Beløb" Binding="{Binding Amount, StringFormat=c, ConverterCulture='dk-DK' }">
