@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:H2_Case_Bank"
         mc:Ignorable="d"
-        Title="Window1" Height="800" Width="1200">
+        Title="Window1" Height="800" Width="1200"
+        WindowStartupLocation="Manual"
+         Left="150" Top="10">
     <Window.Resources>
         <Style TargetType="DataGridCell">
             <Style.Triggers>

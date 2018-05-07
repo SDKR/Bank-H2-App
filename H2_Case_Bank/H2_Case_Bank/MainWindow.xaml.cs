@@ -30,6 +30,7 @@ namespace H2_Case_Bank
             InitializeComponent();
             Kundeoversigt_DataGrid.CanUserAddRows = false;
             Kundeoversigt_DataGrid.ItemsSource = cus.ReturnCustomers();
+            
         }
 
         private void Kundeoversigt_DataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -99,10 +100,9 @@ namespace H2_Case_Bank
                 {
                     case MessageBoxResult.Yes:
 
-                        MessageBox.Show(Selectedcustomer.Firstname + " " + Selectedcustomer.Lastname + " er nu slettet fra databasen", "Succeded", MessageBoxButton.OK, MessageBoxImage.Information);
-
                         Selectedcustomer.DeleteCustomer(Selectedcustomer.UserID);
                         Kundeoversigt_DataGrid.ItemsSource = cus.ReturnCustomers();
+                        MessageBox.Show(Selectedcustomer.Firstname + " " + Selectedcustomer.Lastname + " er nu slettet fra databasen", "Succeded", MessageBoxButton.OK, MessageBoxImage.Information);
                         break;
 
                     case MessageBoxResult.No:
@@ -125,6 +125,11 @@ namespace H2_Case_Bank
             Kundeoversigt_DataGrid.ItemsSource = Find;
 
           
+        }
+
+        private void Info_Button_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Skriv Fornavnet eller Efternavnet på den kunde du vil finde i textboxen til venstre.", "Oplysning", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }
