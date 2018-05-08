@@ -59,28 +59,37 @@ namespace H2_Case_Bank
 
         private void Udfør_Button_Click(object sender, RoutedEventArgs e)
         {
-            if (Aktion_ComboBox.SelectedIndex == 0)
-            {
-                //Indsæt
-                SelectedAccount.Deposit(int.Parse(KontoNR_TextBox.Text), decimal.Parse(Beløb_TextBox.Text));
-                Transaktion_DataGrid.ItemsSource = null;
+           
+                if (Aktion_ComboBox.SelectedIndex == 0 && KontoNR_TextBox.Text != "" && Beløb_TextBox.Text != "")
+                {
+                    //Indsæt
+                    SelectedAccount.Deposit(int.Parse(KontoNR_TextBox.Text), decimal.Parse(Beløb_TextBox.Text));
+                    Transaktion_DataGrid.ItemsSource = null;
 
-                cus.UserID = int.Parse(UserID_TextBox.Text);
-                KundeNavn_DataGrid.ItemsSource = SelectedAccount.getCustomerAccounts(cus);
+                    cus.UserID = int.Parse(UserID_TextBox.Text);
+                    KundeNavn_DataGrid.ItemsSource = SelectedAccount.getCustomerAccounts(cus);
+                }
+
+                else if (Aktion_ComboBox.SelectedIndex == 1 && KontoNR_TextBox.Text != "" && Beløb_TextBox.Text != "")
+                {
+                    //Udbetal
+                    SelectedAccount.Withdraw(int.Parse(KontoNR_TextBox.Text), decimal.Parse(Beløb_TextBox.Text));
+
+                    Transaktion_DataGrid.ItemsSource = null;
+
+                    cus.UserID = int.Parse(UserID_TextBox.Text);
+                    KundeNavn_DataGrid.ItemsSource = SelectedAccount.getCustomerAccounts(cus);
+
+
+                }
+
+            else
+            {
+                MessageBox.Show("Vælg en konto til venstre som du vil Indsætte/Udbetale fra.", "Vælg konto.", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
-            else if (Aktion_ComboBox.SelectedIndex == 1)
-            {
-                //Udbetal
-                SelectedAccount.Withdraw(int.Parse(KontoNR_TextBox.Text), decimal.Parse(Beløb_TextBox.Text));
-
-                Transaktion_DataGrid.ItemsSource = null;
-
-                cus.UserID = int.Parse(UserID_TextBox.Text);
-                KundeNavn_DataGrid.ItemsSource = SelectedAccount.getCustomerAccounts(cus);
-
-              
-            }
+            
+            
             
         }
 
@@ -150,7 +159,7 @@ namespace H2_Case_Bank
         {
             if (Rente_TextBox.Text.Equals(string.Empty) || Balance_TextBox.Text.Equals(string.Empty))
             {
-                MessageBox.Show("Rente og Balance skal udfuldes.");
+                MessageBox.Show("Rente og Balance skal udfuldes.", "Fejl", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {
@@ -171,7 +180,7 @@ namespace H2_Case_Bank
         {
             if (SelectedAccount.Accounttype == null)
             {
-                MessageBox.Show("Vælg en konto", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Vælg en konto", "Fejl", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else if (SelectedAccount.Accounttype != null)
             {
@@ -180,7 +189,7 @@ namespace H2_Case_Bank
                 {
                     case MessageBoxResult.Yes:
 
-                        MessageBox.Show(SelectedAccount.Accountnumber + " er nu slettet fra databasen", "Succeded", MessageBoxButton.OK, MessageBoxImage.Information);
+                        MessageBox.Show(SelectedAccount.Accountnumber + " er nu slettet fra databasen.", "Udført", MessageBoxButton.OK, MessageBoxImage.Information);
 
                         SelectedAccount = (Account)KundeNavn_DataGrid.SelectedItem;
                         SelectedAccount.deleteAccount(SelectedAccount);
