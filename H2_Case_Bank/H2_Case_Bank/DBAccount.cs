@@ -19,8 +19,6 @@ namespace H2_Case_Bank
          * */
         public List<Account> getAccounts(int custumerID)
         {
-            ////remove2.CurrencyDecimalDigits = 2;
-            ////remove2.NumberDecimalDigits = 2;
             List<Account> CusList = new List<Account>();
 
             SqlConnection sqlConn = new SqlConnection(DatabaseLogin.constring);
@@ -107,7 +105,7 @@ namespace H2_Case_Bank
         */
         public void deleteAccount(Account acc)
         {
-            // Delte transactions 
+            // Delte transactions in order to delete accounts
             using (SqlConnection connection = new SqlConnection(DatabaseLogin.constring))
             {
                 using (SqlCommand command = new SqlCommand("DELETE FROM Transactions WHERE FK_AccountID = " + acc.Accountnumber, connection))
@@ -142,7 +140,6 @@ namespace H2_Case_Bank
                     }
                     catch (SqlException e)
                     {
-                        // error here
                         Console.WriteLine("Delete account Error");
                         Console.WriteLine(e);
                     }
@@ -191,7 +188,6 @@ namespace H2_Case_Bank
                     {
                         command.Parameters.Add("@Balance", SqlDbType.Float).Value = currBalance;
                         command.Parameters.Add("@PK_Accountnumber", SqlDbType.Int).Value = accountnumber;
-                        // repeat for all variables....
                         connection.Open();
                         command.ExecuteNonQuery();
                     }
@@ -237,7 +233,6 @@ namespace H2_Case_Bank
                     {
                         command.Parameters.Add("@Balance", SqlDbType.Float).Value = currBalance;
                         command.Parameters.Add("@PK_Accountnumber", SqlDbType.Int).Value = accountnumber;
-                        // repeat for all variables....
                         connection.Open();
                         command.ExecuteNonQuery();
                     }
@@ -252,6 +247,10 @@ namespace H2_Case_Bank
             transactionentry(accountnumber, transaction);
 
         }
+
+        /*
+         * Creates entry in transaction table
+         */
 
         public void transactionentry(int accountnumber, decimal transaction)
         {

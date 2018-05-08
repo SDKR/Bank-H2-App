@@ -77,7 +77,6 @@ namespace H2_Case_Bank
                     }
                     catch (SqlException e)
                     {
-                        // error here
                         Console.WriteLine("CreateCustomer Error");
                         Console.WriteLine(e);
                     }
