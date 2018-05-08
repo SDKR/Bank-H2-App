@@ -13,7 +13,7 @@ namespace H2_Case_Bank
     class DBCustomer
     {
         /*
-         * 
+         * Returns customer list
          */
 
         public List<Customer> returnCustomers()
@@ -94,7 +94,7 @@ namespace H2_Case_Bank
          * Delete customer with userid x from list
          */
 
-        public void deleteCustomer(int UserID)
+        public bool deleteCustomer(int UserID)
         {
             using (SqlConnection connection = new SqlConnection(DatabaseLogin.constring))
             {
@@ -104,12 +104,14 @@ namespace H2_Case_Bank
                     {
                         connection.Open();
                         int recordsAffected = command.ExecuteNonQuery();
+                        return true;
                     }
                     catch (SqlException e)
                     {
                         // error here
                         Console.WriteLine("Create account Error");
                         Console.WriteLine(e);
+                        return false;
                     }
                     finally
                     {

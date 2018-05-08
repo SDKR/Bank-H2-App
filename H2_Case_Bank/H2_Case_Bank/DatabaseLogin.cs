@@ -15,6 +15,6 @@ namespace H2_Case_Bank
         //Kims sql login
         //public static string constring = @"server=SKAB4-PC-01\KIM;database=Bank;UID=sa;password=Pa$$w0rd";
         //Jannik sql login 
-        public static string constring = @"server=SKAB4-PC-03;database=Bank;UID=sa;password=Passw0rd";
+        //public static string constring = @"server=SKAB4-PC-03;database=Bank;UID=sa;password=Passw0rd";
     }
 }
