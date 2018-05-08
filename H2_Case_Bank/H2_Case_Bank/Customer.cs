@@ -20,9 +20,9 @@ namespace H2_Case_Bank
         {
             DBC.createCustomer(firstname, lastname);
         }
-        public void DeleteCustomer(int UserID)
+        public bool DeleteCustomer(int UserID)
         {
-            DBC.deleteCustomer(UserID);
+            return DBC.deleteCustomer(UserID);
         }
 
             //Delete Customer
