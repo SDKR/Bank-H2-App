@@ -33,11 +33,11 @@
                         <Trigger Property="AlternationIndex" Value="1">
                             <Setter Property="Background" Value="WhiteSmoke" />
                         </Trigger>
-                        <DataTrigger Binding="{Binding Path=Selectable}" Value="False">
+                        <!--<DataTrigger Binding="{Binding Path=Selectable}" Value="False">
                             <DataTrigger.Setters>
                                 <Setter Property="Background" Value="LightGray" />
                             </DataTrigger.Setters>
-                        </DataTrigger>
+                        </DataTrigger>-->
                     </Style.Triggers>
                 </Style>
             </DataGrid.RowStyle>
@@ -69,11 +69,11 @@
                         <Trigger Property="AlternationIndex" Value="1">
                             <Setter Property="Background" Value="WhiteSmoke" />
                         </Trigger>
-                        <DataTrigger Binding="{Binding Path=Selectable}" Value="False">
+                        <!--<DataTrigger Binding="{Binding Path=Selectable}" Value="False">
                             <DataTrigger.Setters>
                                 <Setter Property="Background" Value="LightGray" />
                             </DataTrigger.Setters>
-                        </DataTrigger>
+                        </DataTrigger>-->
                     </Style.Triggers>
                 </Style>
             </DataGrid.RowStyle>
