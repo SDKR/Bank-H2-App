@@ -5,8 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:H2_Case_Bank"
         mc:Ignorable="d"
-        Title="Bank" Height="800" Width="1200">
-
+        
+        Title="Bank" Height="800" Width="1200"
+        WindowStartupLocation="Manual"
+        Left="150" Top="10">
+        
     <Window.Resources>
         <Style TargetType="DataGridCell">
             <Style.Triggers>
@@ -73,7 +76,13 @@
                 </LinearGradientBrush>
             </Label.Background>
         </Label>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="565,27,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="223" Name="Search_TextBox" TextChanged="Search_TextBox_TextChanged"/>
-        <Label Content="Find Kunde" HorizontalAlignment="Left" Margin="492,27,0,0" VerticalAlignment="Top" Foreground="#FF144AE0" x:Name="Fornavn_Label_Copy"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="122,30,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="223" Name="Search_TextBox" TextChanged="Search_TextBox_TextChanged"/>
+        <Label Content="Find Kunde" HorizontalAlignment="Left" Margin="47,27,0,0" VerticalAlignment="Top" Foreground="#FF144AE0" x:Name="Fornavn_Label_Copy"/>
+        <Button Content="?" HorizontalAlignment="Left" Margin="350,31,0,0" VerticalAlignment="Top" Width="24" FontSize="14" RenderTransformOrigin="-1.508,0.781" Click="Info_Button_Click" Name="Info_Button" BorderThickness="0,0,0,0" Foreground="#FF144AE0" FontStyle="Italic" FontWeight="Bold">
+            <Button.Background>
+                <ImageBrush/>
+            </Button.Background>
+        </Button>
+
     </Grid>
 </Window>
