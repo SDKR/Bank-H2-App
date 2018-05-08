@@ -98,15 +98,7 @@
                 </DataGridTextColumn>
                 <DataGridTextColumn Header="Overførelses Dato" Binding="{Binding Date}"  Width="*"/>
                 
-                <!--<DataGridTextColumn Header="Overførelses nr." Binding="{Binding TransactionID}" />
-                <DataGridTextColumn Header="posnegbool." Binding="{Binding posnegbool}" />
-                <DataGridTextColumn Header="Beløb" Binding="{Binding Amount}">-->
-                    
-                   
-                <!--</DataGridTextColumn>
-                <DataGridTextColumn Header="Overførelses Dato" Binding="{Binding Date}" Width="*">-->
-
-                <!--</DataGridTextColumn>-->
+               
             </DataGrid.Columns>
         </DataGrid>
         <Label Content="Overførelser" HorizontalAlignment="Left" Margin="623,237,0,0" VerticalAlignment="Top" Width="532" Foreground="White" FontWeight="Bold" FontSize="24" Name="Transaktion_Label">

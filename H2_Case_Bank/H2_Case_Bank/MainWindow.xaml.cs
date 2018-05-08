@@ -100,9 +100,18 @@ namespace H2_Case_Bank
                 {
                     case MessageBoxResult.Yes:
 
-                        Selectedcustomer.DeleteCustomer(Selectedcustomer.UserID);
+                        
+                        
+                        if (Selectedcustomer.DeleteCustomer(Selectedcustomer.UserID) == true)
+                        {
+                            
+                            MessageBox.Show(Selectedcustomer.Firstname + " " + Selectedcustomer.Lastname + " er nu slettet fra databasen", "Succeded", MessageBoxButton.OK, MessageBoxImage.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Der opstod en fejl.\n- Tjek om kunden stadig har konti i banken.", "fejl", MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
                         Kundeoversigt_DataGrid.ItemsSource = cus.ReturnCustomers();
-                        MessageBox.Show(Selectedcustomer.Firstname + " " + Selectedcustomer.Lastname + " er nu slettet fra databasen", "Succeded", MessageBoxButton.OK, MessageBoxImage.Information);
                         break;
 
                     case MessageBoxResult.No:
