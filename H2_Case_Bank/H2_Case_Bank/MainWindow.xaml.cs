@@ -36,14 +36,17 @@ namespace H2_Case_Bank
         private void Kundeoversigt_DataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             MainWindow MW = new MainWindow();
+            if (Selectedcustomer.Firstname != null)
+            {
+                win1.KundeNavn_DataGrid.ItemsSource = acc.getCustomerAccounts(Selectedcustomer);
 
-            win1.KundeNavn_DataGrid.ItemsSource = acc.getCustomerAccounts(Selectedcustomer);
+                win1.KundeNavn_Label.Content = Selectedcustomer.Firstname + " " + Selectedcustomer.Lastname + "'s Konti";
+                win1.UserID_TextBox.Text = Selectedcustomer.UserID.ToString();
 
-            win1.KundeNavn_Label.Content = Selectedcustomer.Firstname + " " + Selectedcustomer.Lastname + "'s Konti";
-            win1.UserID_TextBox.Text = Selectedcustomer.UserID.ToString();
-
-            win1.Show();
-            this.Close();
+                win1.Show();
+                this.Close();
+            }
+            
             
         }
 
@@ -67,10 +70,17 @@ namespace H2_Case_Bank
 
         private void Opret_Button_Click(object sender, RoutedEventArgs e)
         {
-            cus.CreateCustomer(Fornavn_TextBox.Text, Efternavn_TextBox.Text);
-
-            Kundeoversigt_DataGrid.ItemsSource = null;
-            Kundeoversigt_DataGrid.ItemsSource = cus.ReturnCustomers();
+            if (Fornavn_TextBox.Text != "" && Efternavn_TextBox.Text != "")
+            {
+                 cus.CreateCustomer(Fornavn_TextBox.Text, Efternavn_TextBox.Text);
+                 Kundeoversigt_DataGrid.ItemsSource = null;
+                 Kundeoversigt_DataGrid.ItemsSource = cus.ReturnCustomers();
+            }
+            else
+            {
+                MessageBox.Show("Udfyld Fornavn og Efternavn, hvis du vil oprette en kunde.", "Kan ikke Oprette Kunde.", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+           
         }
 
         private void Kundeoversigt_DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
