@@ -10,12 +10,13 @@ namespace H2_Case_Bank
 {
     class DBTransaction
     {
-        
+
+        /*
+        * Pull transactions from database and return list 
+        */
+
         public List<Transaction> getTransactions(Account acc)
         {
-            /*
-             * Pull transactions from database and return list 
-             */
             List<Transaction> CusList = new List<Transaction>();
 
             SqlConnection sqlConn = new SqlConnection(DatabaseLogin.constring);

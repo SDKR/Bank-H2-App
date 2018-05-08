@@ -16,16 +16,27 @@ namespace H2_Case_Bank
         public string Lastname { get; set; }
         public DateTime CreationDate { get; set; }
 
+        /*
+         * Create Customer 
+         */
+
         public void CreateCustomer(string firstname, string lastname)
         {
             DBC.createCustomer(firstname, lastname);
         }
+
+        /*
+         * Delete Customer
+         */
+
         public bool DeleteCustomer(int UserID)
         {
             return DBC.deleteCustomer(UserID);
         }
 
-            //Delete Customer
+        /*
+         * Return Customer
+         */
 
         public List<Customer> ReturnCustomers()
         {

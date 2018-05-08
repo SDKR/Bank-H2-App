@@ -18,6 +18,10 @@ namespace H2_Case_Bank
         public decimal Amount { get; set; }
         public bool posnegbool { get; set; }
         
+        /*
+         * Get list of transactions 
+         */
+
         public List<Transaction> getTransactions(Account acc)
         {
             List <Transaction> Modify = dbt.getTransactions(acc);
@@ -34,7 +38,6 @@ namespace H2_Case_Bank
                 }
             }
             return Modify;
-            //return dbt.getTransactions(acc);
         }
 
     }
